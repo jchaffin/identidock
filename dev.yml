@@ -1,0 +1,21 @@
+identidock:
+  extends:
+    file: common.yml
+    service: identidock
+  ports:
+   - "5000:5000"
+   - "9000:9000"
+  environment:
+    ENV: DEV
+  links:
+    - dnmonster
+    - redist
+dnmonster:
+  extends:
+    file: common.yml
+    service: dnmonster
+redis:
+  extends:
+    file: common.yml
+    service: redis
+
