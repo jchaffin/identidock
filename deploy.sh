@@ -14,7 +14,7 @@ docker run -d --restart=always \
   --name proxy \
   --link identidock:identidock \
   -p 80:80 \
-  -e NGINX_HOST=45.55.251.164 \
+  -e NGINX_HOST=$(/sbin/ip route|awk '/default/ { print $3 }')  \
   -e NGINX_PROXY=http://identidock:9090 \
   jchaffin/identiproxy:1.1
 
