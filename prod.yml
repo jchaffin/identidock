@@ -1,0 +1,26 @@
+proxy:
+  image: jchaffin/identiproxy:1.1
+  links:
+    - identidock
+  ports:
+    - "80:80"
+  environment:
+    - NGINX_HOST=159.203.64.1
+    - NGINX_PROXY=http://identidock:9090
+identidock:
+  extends:
+    file: common.yml
+    service: identidock
+  environment:
+    ENV: PROD
+  links:
+    - dnmonster
+    - redis
+dnmonster:
+  extends:
+    file: common.yml
+    service: dnmonster
+redis:
+  extends:
+    file: common.yml
+    service: redis

@@ -1,0 +1,8 @@
+identidock:
+  image: jchaffin/identidock:1.1
+  environment:
+    ENV: DEV
+dnmonster:
+  image: amouat/dnmonster:1.0
+redis:
+  image: redis:3
